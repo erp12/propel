@@ -1,5 +1,5 @@
 (ns propel.core
-  (:gen-class))
+  (:require [reagent.core :as r]))
 
 (def example-push-state
   {:exec '()
@@ -109,15 +109,15 @@
 
 (defn integer_+
   [state]
-  (make-push-instruction state +' [:integer :integer] :integer))
+  (make-push-instruction state + [:integer :integer] :integer))
 
 (defn integer_-
   [state]
-  (make-push-instruction state -' [:integer :integer] :integer))
+  (make-push-instruction state - [:integer :integer] :integer))
 
 (defn integer_*
   [state]
-  (make-push-instruction state *' [:integer :integer] :integer))
+  (make-push-instruction state * [:integer :integer] :integer))
 
 (defn integer_%
   [state]
@@ -141,7 +141,7 @@
     (cond
       (fn? first-instruction) (first-instruction popped-state)
       (integer? first-instruction) (push-to-stack popped-state :integer first-instruction)
-      :else (throw (Exception. (str "Unrecognized Push instruction in program: " first-instruction))))))
+      :else (println (str "Unrecognized Push instruction in program: " first-instruction)))))
 
 (defn interpret-program
   "Runs the given problem starting with the stacks in start-state."
@@ -280,15 +280,24 @@
     (assoc individual
            :behaviors outputs
            :errors errors
-           :total-error (apply +' errors))))
+           :total-error (apply + errors))))
 
 
-(defn -main
-  "Runs propel-gp, giving it a map of arguments."
-  [& args]
-  (binding [*ns* (the-ns 'propel.core)]
-    (propel-gp {:instructions instructions
-                :error-function regression-error-function
-                :max-generations 500
-                :population-size 200
-                :max-initial-program-size 50})))
+(defn ^:export run
+  []
+  (r/render [:div
+             {:style {:background-color "lightgrey"}}
+             [:h1 "Hello world"]
+             [:p "This is a paragraph!"]]
+            (js/document.getElementById "app-container")))
+
+
+; (defn -main
+;   "Runs propel-gp, giving it a map of arguments."
+;   [& args]
+;   (binding [*ns* (the-ns 'propel.core)]
+;     (propel-gp {:instructions instructions
+;                 :error-function regression-error-function
+;                 :max-generations 500
+;                 :population-size 200
+;                 :max-initial-program-size 50})))

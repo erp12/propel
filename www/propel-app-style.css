@@ -1,0 +1,22 @@
+h1 {
+  margin: 10px;
+}
+
+div.row {
+  margin-bottom: 10px;
+}
+
+div#buttons div.col {
+  margin-bottom: 10px;
+}
+
+.tipList {
+  float: left;
+  list-style-type: none;
+  font-size: 1.5em;
+  background-color: black;
+  color: white;
+  list-style-type: none;
+  padding: 10px;
+  margin: 0px;
+}
