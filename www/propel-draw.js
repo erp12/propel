@@ -2,19 +2,15 @@
 const svg = d3.select('svg');
 const width = svg.attr('width');
 const height = svg.attr('height');
+const g = svg.append("g");
 
-
-//Data Variables
-
-
-// Define a margin to give space for axis labels.
-const margin = { left: 30, right: 0, top: 0, bottom: 30 };
-const innerWidth = width - margin.left - margin.right;
-const innerHeight = height - margin.top - margin.bottom;
+const stackLabelHeight = 50;
 
 // Scales
-const integerColorScale = d3.interpolateRdBu
-const stringLengthColorScale = d3.interpolateGreens
+const x = d3.scaleBand().rangeRound([0, width]).padding(0.1);
+const y = d3.scaleLinear().range([height, 0]);
+const integerColorScale = d3.interpolateRdBu;
+const stringLengthColorScale = d3.interpolateGreens;
 
 // Define the tooltips
  const tip = d3.tip()
@@ -27,15 +23,40 @@ const stringLengthColorScale = d3.interpolateGreens
    })
 
 
-   // Draw the plots
-   function draw() {
+ // Draw the plots
+ function drawState(pushState) {
 
-     svg.selectAll("*").remove();
+   console.log(pushState);
 
-     d3.json("WHAT GOES HERE?",
-      function(d) {
+   g.selectAll("*").remove();
 
-      }, function(error, data) {
-        if (error) throw error;
-      }
-   }
+   var types = Object.keys(pushState);
+
+   x.domain(types);
+   y.domain([0, d3.max(pushState, function(d) { return d.length; })]);
+
+   var typeBoxes = g.selectAll(".typeBox")
+    .data(types)
+    .enter()
+      .append("rect")
+      .attr("class", "typeBox")
+      .attr("width", x.bandwidth())
+      .attr("height", stackLabelHeight)
+      .attr("transform", d =>  `translate(${x(d)}, ${height - stackLabelHeight})`)
+      .style("fill", "grey")
+
+   var typeBoxes = g.selectAll(".typeLabel")
+    .data(types)
+    .enter()
+      .append("text")
+      .attr("class", "typeLabel")
+      .attr("x", d => x(d) + (x.bandwidth() / 2))
+      .attr("y", height - (stackLabelHeight / 4))
+      .text(d => d)
+      .attr("font-family", "sans-serif")
+      .attr("font-size", stackLabelHeight / 2)
+      .attr("text-anchor", "middle")
+      .attr("fill", "white");
+
+
+ }

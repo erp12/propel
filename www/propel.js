@@ -61289,12 +61289,12 @@ propel.core.get_args_from_stacks = function propel$core$get_args_from_stacks(sta
       if (cljs.core.truth_(propel.core.empty_stack_QMARK_.call(null, state__$1, stack))) {
         return new cljs.core.Keyword(null, "not-enough-args", "not-enough-args", -322062685);
       } else {
-        var G__2105 = propel.core.pop_stack.call(null, state__$1, stack);
-        var G__2106 = cljs.core.rest.call(null, stacks__$1);
-        var G__2107 = cljs.core.conj.call(null, args, propel.core.peek_stack.call(null, state__$1, stack));
-        state__$1 = G__2105;
-        stacks__$1 = G__2106;
-        args = G__2107;
+        var G__2120 = propel.core.pop_stack.call(null, state__$1, stack);
+        var G__2121 = cljs.core.rest.call(null, stacks__$1);
+        var G__2122 = cljs.core.conj.call(null, args, propel.core.peek_stack.call(null, state__$1, stack));
+        state__$1 = G__2120;
+        stacks__$1 = G__2121;
+        args = G__2122;
         continue;
       }
     }
@@ -61351,8 +61351,8 @@ propel.core.interpret_program = function propel$core$interpret_program(program, 
     if (cljs.core.empty_QMARK_.call(null, (new cljs.core.Keyword(null, "exec", "exec", 1625568743)).cljs$core$IFn$_invoke$arity$1(state))) {
       return state;
     } else {
-      var G__2108 = propel.core.interpret_one_step.call(null, state);
-      state = G__2108;
+      var G__2123 = propel.core.interpret_one_step.call(null, state);
+      state = G__2123;
       continue;
     }
     break;
@@ -61374,15 +61374,15 @@ propel.core.crossover = function propel$core$crossover(prog_a, prog_b) {
   var length_diff = cljs.core.count.call(null, longer) - cljs.core.count.call(null, shorter);
   var shorter_padded = cljs.core.concat.call(null, shorter, cljs.core.repeat.call(null, length_diff, new cljs.core.Keyword(null, "crossover-padding", "crossover-padding", 813834141)));
   return cljs.core.remove.call(null, function(shorter, longer, length_diff, shorter_padded) {
-    return function(p1__2109_SHARP_) {
-      return cljs.core._EQ_.call(null, p1__2109_SHARP_, new cljs.core.Keyword(null, "crossover-padding", "crossover-padding", 813834141));
+    return function(p1__2124_SHARP_) {
+      return cljs.core._EQ_.call(null, p1__2124_SHARP_, new cljs.core.Keyword(null, "crossover-padding", "crossover-padding", 813834141));
     };
   }(shorter, longer, length_diff, shorter_padded), cljs.core.map.call(null, function(shorter, longer, length_diff, shorter_padded) {
-    return function(p1__2110_SHARP_, p2__2111_SHARP_) {
+    return function(p1__2125_SHARP_, p2__2126_SHARP_) {
       if (cljs.core.rand.call(null) < 0.5) {
-        return p1__2110_SHARP_;
+        return p1__2125_SHARP_;
       } else {
-        return p2__2111_SHARP_;
+        return p2__2126_SHARP_;
       }
     };
   }(shorter, longer, length_diff, shorter_padded), shorter_padded, longer));
@@ -61396,8 +61396,8 @@ propel.core.uniform_addition = function propel$core$uniform_addition(prog) {
     }
   });
   return cljs.core.remove.call(null, function(rand_code) {
-    return function(p1__2112_SHARP_) {
-      return cljs.core._EQ_.call(null, p1__2112_SHARP_, new cljs.core.Keyword(null, "mutation-padding", "mutation-padding", -1175836021));
+    return function(p1__2127_SHARP_) {
+      return cljs.core._EQ_.call(null, p1__2127_SHARP_, new cljs.core.Keyword(null, "mutation-padding", "mutation-padding", -1175836021));
     };
   }(rand_code), cljs.core.interleave.call(null, cljs.core.conj.call(null, prog, new cljs.core.Keyword(null, "mutation-padding", "mutation-padding", -1175836021)), rand_code));
 };
@@ -61431,20 +61431,20 @@ propel.core.report = function propel$core$report(pop, generation) {
   cljs.core.println.call(null, "Best behaviors:", (new cljs.core.Keyword(null, "behaviors", "behaviors", 120724909)).cljs$core$IFn$_invoke$arity$1(best));
   return cljs.core.println.call(null);
 };
-propel.core.propel_gp = function propel$core$propel_gp(p__2113) {
-  var map__2114 = p__2113;
-  var map__2114__$1 = (!(map__2114 == null) ? map__2114.cljs$lang$protocol_mask$partition0$ & 64 || cljs.core.PROTOCOL_SENTINEL === map__2114.cljs$core$ISeq$ ? true : false : false) ? cljs.core.apply.call(null, cljs.core.hash_map, map__2114) : map__2114;
-  var population_size = cljs.core.get.call(null, map__2114__$1, new cljs.core.Keyword(null, "population-size", "population-size", -1175003618));
-  var max_generations = cljs.core.get.call(null, map__2114__$1, new cljs.core.Keyword(null, "max-generations", "max-generations", 784506896));
-  var error_function = cljs.core.get.call(null, map__2114__$1, new cljs.core.Keyword(null, "error-function", "error-function", -421428962));
-  var instructions = cljs.core.get.call(null, map__2114__$1, new cljs.core.Keyword(null, "instructions", "instructions", 1724333802));
-  var max_initial_program_size = cljs.core.get.call(null, map__2114__$1, new cljs.core.Keyword(null, "max-initial-program-size", "max-initial-program-size", 1087097952));
+propel.core.propel_gp = function propel$core$propel_gp(p__2128) {
+  var map__2129 = p__2128;
+  var map__2129__$1 = (!(map__2129 == null) ? map__2129.cljs$lang$protocol_mask$partition0$ & 64 || cljs.core.PROTOCOL_SENTINEL === map__2129.cljs$core$ISeq$ ? true : false : false) ? cljs.core.apply.call(null, cljs.core.hash_map, map__2129) : map__2129;
+  var population_size = cljs.core.get.call(null, map__2129__$1, new cljs.core.Keyword(null, "population-size", "population-size", -1175003618));
+  var max_generations = cljs.core.get.call(null, map__2129__$1, new cljs.core.Keyword(null, "max-generations", "max-generations", 784506896));
+  var error_function = cljs.core.get.call(null, map__2129__$1, new cljs.core.Keyword(null, "error-function", "error-function", -421428962));
+  var instructions = cljs.core.get.call(null, map__2129__$1, new cljs.core.Keyword(null, "instructions", "instructions", 1724333802));
+  var max_initial_program_size = cljs.core.get.call(null, map__2129__$1, new cljs.core.Keyword(null, "max-initial-program-size", "max-initial-program-size", 1087097952));
   var generation = 0;
-  var population = cljs.core.repeatedly.call(null, population_size, function(generation, map__2114, map__2114__$1, population_size, max_generations, error_function, instructions, max_initial_program_size) {
+  var population = cljs.core.repeatedly.call(null, population_size, function(generation, map__2129, map__2129__$1, population_size, max_generations, error_function, instructions, max_initial_program_size) {
     return function() {
       return cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null, "program", "program", 781564284)], [propel.core.make_random_push_program.call(null, instructions, max_initial_program_size)]);
     };
-  }(generation, map__2114, map__2114__$1, population_size, max_generations, error_function, instructions, max_initial_program_size));
+  }(generation, map__2129, map__2129__$1, population_size, max_generations, error_function, instructions, max_initial_program_size));
   while (true) {
     var evaluated_pop = cljs.core.sort_by.call(null, new cljs.core.Keyword(null, "total-error", "total-error", 1426239184), cljs.core.map.call(null, error_function, population));
     propel.core.report.call(null, evaluated_pop, generation);
@@ -61454,14 +61454,14 @@ propel.core.propel_gp = function propel$core$propel_gp(p__2113) {
       if (generation >= max_generations) {
         return null;
       } else {
-        var G__2116 = generation + 1;
-        var G__2117 = cljs.core.repeatedly.call(null, population_size, function(generation, population, evaluated_pop, map__2114, map__2114__$1, population_size, max_generations, error_function, instructions, max_initial_program_size) {
+        var G__2131 = generation + 1;
+        var G__2132 = cljs.core.repeatedly.call(null, population_size, function(generation, population, evaluated_pop, map__2129, map__2129__$1, population_size, max_generations, error_function, instructions, max_initial_program_size) {
           return function() {
             return propel.core.select_and_vary.call(null, evaluated_pop);
           };
-        }(generation, population, evaluated_pop, map__2114, map__2114__$1, population_size, max_generations, error_function, instructions, max_initial_program_size));
-        generation = G__2116;
-        population = G__2117;
+        }(generation, population, evaluated_pop, map__2129, map__2129__$1, population_size, max_generations, error_function, instructions, max_initial_program_size));
+        generation = G__2131;
+        population = G__2132;
         continue;
       }
     }
@@ -61494,8 +61494,7 @@ propel.core.regression_error_function = function propel$core$regression_error_fu
   }(program, inputs, correct_outputs, outputs), correct_outputs, outputs);
   return cljs.core.assoc.call(null, individual, new cljs.core.Keyword(null, "behaviors", "behaviors", 120724909), outputs, new cljs.core.Keyword(null, "errors", "errors", -908790718), errors, new cljs.core.Keyword(null, "total-error", "total-error", 1426239184), cljs.core.apply.call(null, cljs.core._PLUS_, errors));
 };
-propel.core.run = function propel$core$run() {
-  return reagent.core.render.call(null, new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "div", "div", 1057191632), new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "style", "style", -496642736), new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "background-color", "background-color", 570434026), "lightgrey"], null)], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, 
-  [new cljs.core.Keyword(null, "h1", "h1", -1896887462), "Hello world"], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "p", "p", 151049309), "This is a paragraph!"], null)], null), document.getElementById("app-container"));
+propel.core.example = function propel$core$example() {
+  return cljs.core.clj__GT_js.call(null, propel.core.example_push_state);
 };
-goog.exportSymbol("propel.core.run", propel.core.run);
+goog.exportSymbol("propel.core.example", propel.core.example);

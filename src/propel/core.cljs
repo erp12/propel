@@ -283,13 +283,19 @@
            :total-error (apply + errors))))
 
 
-(defn ^:export run
+
+
+(defn ^:export example
   []
-  (r/render [:div
-             {:style {:background-color "lightgrey"}}
-             [:h1 "Hello world"]
-             [:p "This is a paragraph!"]]
-            (js/document.getElementById "app-container")))
+  (clj->js example-push-state))
+
+; (defn ^:export run
+;   []
+;   (r/render [:div
+;              {:style {:background-color "lightgrey"}}
+;              [:h2 "Hello world"]
+;              [:p "This is a paragraph!"]]
+;             (js/document.getElementById "app-container")))
 
 
 ; (defn -main
